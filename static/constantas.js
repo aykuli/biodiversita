@@ -8,6 +8,10 @@ export const HONEY_TYPES = [
     isNew: false,
   },
   {
+    honey: "Metcalfa",
+    isNew: false,
+  },
+  {
     honey: "Tiliaceae",
     isNew: false,
   },
@@ -24,7 +28,7 @@ export const HONEY_TYPES = [
     isNew: false,
   },
   {
-    honey: "Nettari",
+    honey: "Nettare",
     isNew: false,
   },
   {

@@ -1,0 +1,76 @@
+import React from "react"
+import Img from "gatsby-image"
+import { makeStyles, createStyles } from "@material-ui/core/styles"
+import { Typography } from "@material-ui/core"
+
+const useStyles = makeStyles(theme =>
+  createStyles({
+    item: {
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      margin: 0,
+      padding: 0,
+      backgroundColor: "transparent",
+      border: "none",
+      fontSize: 12,
+
+      cursor: "pointer",
+    },
+    honeyName: {
+      fontSize: 12,
+      lineHeight: "16px",
+      color: "#3C3B3B",
+    },
+    isNewHoney: {
+      fontSize: 10,
+      lineHeight: "14px",
+      color: "#D30F0F",
+    },
+    currentHoney: {
+      fontSize: 12,
+      lineHeight: "16px",
+      color: theme.palette.primary.main,
+    },
+    img: {
+      width: "100%",
+      height: "calc(100% - 40px)",
+    },
+    text: {
+      height: 40,
+    },
+  })
+)
+
+const HoneyType = ({ honey, handleHoney, isCurrent, isNew, imgData }) => {
+  const styles = useStyles()
+  console.log(imgData)
+
+  return (
+    <button onClick={() => handleHoney(honey)} className={styles.item}>
+      <Img
+        className={styles.img}
+        fluid={imgData.fluid}
+        alt={imgData.fluid.originalName}
+        fadeIn
+        loading="eager"
+      />
+      <div className={styles.text}>
+        <Typography
+          variant="body1"
+          className={isCurrent ? styles.currentHoney : styles.honeyName}
+        >
+          {honey}
+        </Typography>
+        {isNew ? (
+          <Typography variant="body1" className={styles.isNewHoney}>
+            Novità
+          </Typography>
+        ) : null}
+      </div>
+    </button>
+  )
+}
+
+export default HoneyType
