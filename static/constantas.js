@@ -1,34 +1,37 @@
 export const HONEY_TYPES = [
   {
-    honeyType: "Millefiori",
+    honey: "Millefiori",
     isNew: true,
   },
   {
-    honeyType: "Castanea",
+    honey: "Castanea",
     isNew: false,
   },
   {
-    honeyType: "Tiliaceae",
+    honey: "Tiliaceae",
     isNew: false,
   },
   {
-    honeyType: "Citrus",
+    honey: "Citrus",
     isNew: false,
   },
   {
-    honeyType: "Hedysarum",
+    honey: "Hedysarum",
     isNew: false,
   },
   {
-    honeyType: "Eucalyptus",
+    honey: "Eucalyptus",
     isNew: false,
   },
   {
-    honeyType: "Nettari",
+    honey: "Nettari",
     isNew: false,
   },
   {
-    honeyType: "Composite",
+    honey: "Composite",
     isNew: false,
   },
 ]
+
+export const MAIN_API = `https://3bee.link:5010/api/v1/`
+export const BEEKEPERS = "beekeepers/"

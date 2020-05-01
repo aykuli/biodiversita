@@ -10,7 +10,7 @@ const openSans = {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#FFD77F",
+      main: "#FFB000",
       contrastText: "#FFFFFF",
     },
     secondary: {
