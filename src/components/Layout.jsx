@@ -1,16 +1,11 @@
 import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import {
-  makeStyles,
-  createStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles"
+import { makeStyles, createStyles } from "@material-ui/core/styles"
 
-import theme from "../themes/theme-light"
-// import Navbar from "./Navbar/Navbar"
-// import Footer from "./Footer"
+import SubHeader from "./SubHeader"
+import { Typography } from "@material-ui/core"
 
-const useStyles = makeStyles((/* theme: Theme */) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {},
     content: {},
@@ -21,21 +16,23 @@ const useStyles = makeStyles((/* theme: Theme */) =>
       margin: "0 auto",
       padding: "50px 10px",
     },
-  }))
+  })
+)
 
-const Layout = ({ children, tabIndex }) => {
-  const classes = useStyles()
+const Layout = ({ children }) => {
+  const styles = useStyles()
   return (
-    <ThemeProvider theme={theme}>
-      <div className={classes.root}>
-        <CssBaseline />
-        <div className={classes.content}>
-          {/* <Navbar activeTab={tabIndex} /> */}
-          <main className={classes.main}>{children}</main>
-        </div>
-        {/* <Footer /> */}
+    <div className={styles.root}>
+      <CssBaseline />
+      Black Header here <br />
+      <SubHeader />
+      <Typography variant="h2" color="primary">
+        Primary test
+      </Typography>
+      <div className={styles.content}>
+        <main className={styles.main}>{children}</main>
       </div>
-    </ThemeProvider>
+    </div>
   )
 }
 

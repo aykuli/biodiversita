@@ -25,11 +25,11 @@ const theme = createMuiTheme({
       default: "#FFFFFF",
     },
     success: {
-      main: "A5FA39",
+      main: "#A5FA39",
     },
   },
   typography: {
-    fontFamily: "PT Sans",
+    fontFamily: "Open Sans",
     fontSize: 16,
     h1: {
       fontSize: "3.5rem",
