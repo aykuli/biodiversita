@@ -39,3 +39,4 @@ export const HONEY_TYPES = [
 
 export const MAIN_API = `https://3bee.link:5010/api/v1/`
 export const BEEKEPERS = "beekeepers/"
+export const BEEKEPER_DESCRIPTION = "beekeeper_description/"

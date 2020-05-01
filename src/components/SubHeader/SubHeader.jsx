@@ -28,8 +28,17 @@ const useStyles = makeStyles(theme =>
       },
     },
     next: {
+      width: 50,
+      padding: 5,
       backgroundColor: "transparent",
+      backgroundImage: `url(${require("./assets/arrow.svg")})`,
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "top 50% left 50%",
       border: "none",
+      cursor: "pointer",
+    },
+    hidden: {
+      display: "none",
     },
   })
 )
@@ -43,7 +52,7 @@ const SubHeader = () => {
         edges {
           node {
             id
-            fluid {
+            fluid(fit: CONTAIN) {
               ...GatsbyImageSharpFluid
               originalName
             }
@@ -54,6 +63,22 @@ const SubHeader = () => {
   `)
 
   const imgNodes = dataQl.allImageSharp.edges
+  console.log(imgNodes)
+
+  // filtering needed images for SubHeader
+  const images = []
+  imgNodes.forEach(el => {
+    const honeyType = el.node.fluid.originalName.slice(0, -4)
+    let isExist = false
+    HONEY_TYPES.forEach(({ honey }) => {
+      if (honey === honeyType) {
+        isExist = true
+      }
+    })
+    if (isExist) {
+      images.push(el)
+    }
+  })
 
   const [currentHoney, setCurrentHoney] = useState(HONEY_TYPES[0].honey)
 
@@ -78,7 +103,8 @@ const SubHeader = () => {
         {HONEY_TYPES.map(({ honey, isNew }) => {
           const isCurrent = honey === currentHoney
           let imgNode
-          imgNodes.forEach(item => {
+
+          images.forEach(item => {
             if (item.node.fluid.originalName === `${honey}.png`) {
               imgNode = item.node
             }
@@ -99,7 +125,7 @@ const SubHeader = () => {
         })}
       </ul>
       <button className={styles.next}>
-        <span className="hidden">More honey types</span>
+        <span className={styles.hidden}>More honey types</span>
       </button>
     </div>
   )

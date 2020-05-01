@@ -6,11 +6,13 @@ import { Typography } from "@material-ui/core"
 const useStyles = makeStyles(theme =>
   createStyles({
     item: {
+      display: "block",
+      width: "100%",
       height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-      margin: 0,
+      // display: "flex",
+      // flexDirection: "column",
+      // justifyContent: "space-between",
+      margin: "0 auto",
       padding: 0,
       backgroundColor: "transparent",
       border: "none",
@@ -34,7 +36,6 @@ const useStyles = makeStyles(theme =>
       color: theme.palette.primary.main,
     },
     img: {
-      width: "100%",
       height: "calc(100% - 40px)",
     },
     text: {
@@ -45,12 +46,17 @@ const useStyles = makeStyles(theme =>
 
 const HoneyType = ({ honey, handleHoney, isCurrent, isNew, imgData }) => {
   const styles = useStyles()
-  console.log(imgData)
 
   return (
-    <button onClick={() => handleHoney(honey)} className={styles.item}>
+    <button
+      onClick={() => handleHoney(honey)}
+      className={styles.item}
+      type="button"
+      tabIndex="0"
+    >
       <Img
         className={styles.img}
+        imgStyle={{ width: "auto", height: "auto", left: 30 }}
         fluid={imgData.fluid}
         alt={imgData.fluid.originalName}
         fadeIn
