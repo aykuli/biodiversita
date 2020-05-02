@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
-import { Typography } from "@material-ui/core"
+import { Typography, Button } from "@material-ui/core"
 
 import { HONEY_PROPERTIES } from "../../../static/constantas"
 
@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     container: {
       margin: 0,
+      textAlign: "center",
     },
     title: {
       lineHeight: 1,
@@ -22,6 +23,18 @@ const useStyles = makeStyles(theme =>
     cards: {
       display: "flex",
       flexWrap: "wrap",
+      marginBottom: 100,
+    },
+    btn: {
+      width: 420,
+      fontSize: 28,
+      lineHeight: 3,
+      color: theme.palette.primary.main,
+
+      backgroundColor: theme.palette.text.secondary,
+      border: `1px solid ${theme.palette.primary.main}`,
+      boxSizing: "border-box",
+      borderRadius: 40,
     },
   })
 )
@@ -75,6 +88,9 @@ const HoneyProperty = ({ title, description }) => {
           )
         })}
       </div>
+      <Button variant="contained" className={styles.btn}>
+        Scegli il suo miele
+      </Button>
     </div>
   )
 }
