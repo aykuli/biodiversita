@@ -109,16 +109,19 @@ export const HONEY_PROPERTIES = [
 export const WHAT_IS_3BEE = [
   {
     title: "Monitoraggio",
+    imgName: "3bee-Monitoraggio.jpg",
     description:
       "Tab = Monitoraggio. Inserire testo con le specifiche dell’apicoltore, spiegazione  testo con le specifiche dell’apicoltore, testo con le dell’apicoltore, spiegazione  specifiche dell’apicoltore, spiegazione testo con le apicoltore, spiegazione  testo.",
   },
   {
     title: "Certificato",
+    imgName: "3bee-Certificato.jpg",
     description:
       "Tab = Certificato. Inserire testo con le specifiche dell’apicoltore, spiegazione  testo con le specifiche dell’apicoltore, testo con le dell’apicoltore, spiegazione  specifiche dell’apicoltore, spiegazione testo con le apicoltore, spiegazione  testo.",
   },
   {
     title: "Miele genuino",
+    imgName: "3bee-Miele-genuino.jpg",
     description:
       "Tab = Miele genuino. Inserire testo con le specifiche dell’apicoltore, spiegazione  testo con le specifiche dell’apicoltore, testo con le dell’apicoltore, spiegazione  specifiche dell’apicoltore, spiegazione testo con le apicoltore, spiegazione  testo.",
   },

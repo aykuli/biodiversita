@@ -1,9 +1,10 @@
-import React from "react"
-import { makeStyles, createStyles } from "@material-ui/core/styles"
+import React, { memo } from "react"
+import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
+import { makeStyles } from "@material-ui/core/styles"
 import { Typography, AppBar } from "@material-ui/core"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
-import Box from "@material-ui/core/Box"
 
 import { WHAT_IS_3BEE } from "../../../static/constantas"
 
@@ -14,15 +15,11 @@ const TabPanel = props => {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <>{children}</>}
     </div>
   )
 }
@@ -36,9 +33,6 @@ const a11yProps = str => {
 
 const useStyles = makeStyles(theme => ({
   container: {
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "space-between",
     margin: "0 auto 100px",
   },
   title: {
@@ -83,30 +77,82 @@ const useStyles = makeStyles(theme => ({
     lineHeight: 1.3,
     textAlign: "center",
   },
+  imgTab: {
+    margin: "auto",
+  },
 }))
+
+const imgStyle = {
+  // height: 670,
+  objectFit: "contain",
+}
 
 const WhatIs3Bee = () => {
   const styles = useStyles()
   const [value, setValue] = React.useState(0)
 
+  const dataQl = useStaticQuery(graphql`
+    query {
+      allImageSharp {
+        edges {
+          node {
+            id
+            fluid(
+              fit: COVER
+              srcSetBreakpoints: [560, 420, 370]
+              maxHeight: 630
+              maxWidth: 800
+            ) {
+              originalName
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const imgNodes = dataQl.allImageSharp.edges
+
+  const images = new Map()
+  imgNodes.forEach(item => {
+    if (item.node.fluid.originalName.includes("3bee")) {
+      images.set(item.node.fluid.originalName, item.node)
+    }
+  })
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+
   const title = "Cos’è un’adozione 3Bee?"
+
   return (
     <div className={styles.container}>
       <Typography variant="h2" className={styles.title}>
         {title}
       </Typography>
-      <TabPanel value={value} index={0}>
-        Monitoraggio0
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Certificato1
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Miele genuino2
-      </TabPanel>
+      {WHAT_IS_3BEE.map(({ title, imgName }, index) => {
+        const image = images.get(imgName)
+        console.log("image: ", image)
+        return (
+          <TabPanel
+            key={imgName}
+            value={value}
+            index={index}
+            className={styles.imgTab}
+          >
+            <Img
+              className={styles.img}
+              fluid={image.fluid}
+              alt={image.fluid.originalName}
+              imgStyle={imgStyle}
+              fadeIn
+              loading="eager"
+            />
+          </TabPanel>
+        )
+      })}
       <AppBar position="static" className={styles.appBar}>
         <Tabs value={value} onChange={handleChange} aria-label={title}>
           {WHAT_IS_3BEE.map(({ title }) => (
@@ -121,12 +167,17 @@ const WhatIs3Bee = () => {
         <div className={styles.bar} />
       </AppBar>
       {WHAT_IS_3BEE.map(({ description }, index) => (
-        <TabPanel value={value} index={index} className={styles.desc}>
-          {description}
+        <TabPanel
+          key={description.slice(0, 15)}
+          value={value}
+          index={index}
+          className={styles.desc}
+        >
+          <Typography variant="body1">{description}</Typography>
         </TabPanel>
       ))}
     </div>
   )
 }
 
-export default WhatIs3Bee
+export default memo(WhatIs3Bee)
