@@ -2,12 +2,15 @@ import React from "react"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 import { Typography } from "@material-ui/core"
 
+import Impact from "./Impact"
+import HoneyProperty from "../HoneyProperty/HoneyProperty"
+
 const useStyles = makeStyles(theme =>
   createStyles({
     container: {
       maxWidth: 1440,
       margin: "auto",
-      padding: "40px 0 40px 57px",
+      padding: "40px 130px 40px",
     },
     slogan: {
       fontWeight: "normal",
@@ -22,9 +25,13 @@ const useStyles = makeStyles(theme =>
     impactForPlanet: {
       display: "flex",
       justifyContent: "space-between",
+      marginBottom: 100,
     },
     impactTxt: {
       marginBottom: 40,
+    },
+    impactRight: {
+      display: "flex",
     },
   })
 )
@@ -42,23 +49,13 @@ const BeeKeeper = ({ beekeeperName }) => {
       </Typography>
       <div className={styles.photosAndVideos}></div>
       <div className={styles.impactForPlanet}>
-        <div className={styles.impactLeft}>
-          <Typography variant="h3">
-            Esplora l’impatto per il pianeta di Apicoltura Galati{" "}
-          </Typography>
-          <Typography variant="body1" className={styles.impactTxt}>
-            L’Azienda Agricola Apistica di Galati Fabio nasce nel 2014,
-            dall’esperienza trentennale ereditata dal padre Francesco.
-          </Typography>
-          <Typography variant="body1" className={styles.impactTxt}>
-            Con sede a Curinga nella provincia di Catanzaro in Calabria, Fabio
-            produce miele vergine integrale con lavorazione a freddo.{" "}
-          </Typography>
-          <Typography variant="body1" className={styles.impactTxt}>
-            Non solo apicoltore, ma anche allevatore di regine, nel 2020 Fabio
-            entra nell’Albo Nazionale degli Allevatori di Api Italiane.
-          </Typography>
-        </div>
+        <Impact />
+      </div>
+      <div className={styles.honeyProperties}>
+        <HoneyProperty
+          title="Il Millefiori di Fabio"
+          description="Proprietà e benefici"
+        />
       </div>
     </div>
   )

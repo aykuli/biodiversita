@@ -13,7 +13,7 @@ import {
 import Layout from "../components/Layout"
 import BeeKeepers from "../components/Beekepers"
 import SubHeader from "../components/SubHeader/SubHeader"
-import BeeKeeper from "../components/Beekeper"
+import BeeKeeper from "../components/Beekeeper/Beekeper"
 
 const Index = () => {
   const [currentHoney, setCurrentHoney] = useState(HONEY_TYPES[0].honey)

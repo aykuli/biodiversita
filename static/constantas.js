@@ -49,3 +49,36 @@ export const HONEY_TYPES = [
 export const MAIN_API = `https://3bee.link:5010/api/v1/`
 export const BEEKEPERS = "beekeepers/"
 export const BEEKEPER_DESCRIPTION = "beekeeper_description/"
+
+export const IMPACTS = [
+  {
+    title: "Apiari",
+    quantity: "5",
+    description: "in 3 zone",
+  },
+  {
+    title: "Apiari",
+    quantity: "400",
+    description: "biodiversità",
+  },
+  {
+    title: "Mieli",
+    quantity: "6",
+    description: "varietà",
+  },
+  {
+    title: "Biodiversità",
+    quantity: "3 mil",
+    description: "api protette",
+  },
+  {
+    title: "All’anno",
+    quantity: "1.2M",
+    description: "fiori impollinati",
+  },
+  {
+    title: "All’anno",
+    quantity: "16",
+    description: "Ton CO2 ass",
+  },
+]
