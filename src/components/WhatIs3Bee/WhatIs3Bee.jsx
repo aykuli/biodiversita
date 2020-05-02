@@ -5,7 +5,7 @@ import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Box from "@material-ui/core/Box"
 
-function TabPanel(props) {
+const TabPanel = props => {
   const { children, value, index, ...other } = props
 
   return (
@@ -25,10 +25,10 @@ function TabPanel(props) {
   )
 }
 
-function a11yProps(index) {
+const a11yProps = str => {
   return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
+    id: `tab-${str}`,
+    "aria-controls": `tabpanel-${str}`,
   }
 }
 
@@ -45,7 +45,23 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
+  },
+  appBar: {
+    backgroundColor: theme.palette.background.default,
+    boxShadow: "none",
+    "& div div": {
+      justifyContent: "space-around",
+      "& span.MuiTabs-indicator": {
+        backgroundColor: theme.palette.text.primary,
+      },
+    },
+  },
+  tap: {
+    width: "33%",
+    fontSize: 30,
+    lineHeight: 1.9,
+    color: "#3C3B3B",
   },
 }))
 
@@ -56,31 +72,48 @@ const WhatIs3Bee = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
-
+  const title = "Cos’è un’adozione 3Bee?"
   return (
     <div className={styles.container}>
       <Typography variant="h2" className={styles.title}>
-        Cos’è un’adozione 3Bee?
+        {title}
       </Typography>
-      <AppBar position="static">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-        >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+      <TabPanel value={value} index={0}>
+        Monitoraggio0
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Certificato1
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Miele genuino2
+      </TabPanel>
+      <AppBar position="static" className={styles.appBar}>
+        <Tabs value={value} onChange={handleChange} aria-label={title}>
+          <Tab
+            label="Monitoraggio"
+            {...a11yProps("Monitoraggio")}
+            className={styles.tap}
+          />
+          <Tab
+            label="Certificato"
+            {...a11yProps("Certificato")}
+            className={styles.tap}
+          />
+          <Tab
+            label="Miele genuino"
+            {...a11yProps("Miele genuino")}
+            className={styles.tap}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        Monitoraggio0
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        Certificato1
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Miele genuino2
       </TabPanel>
     </div>
   )
