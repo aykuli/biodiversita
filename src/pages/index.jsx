@@ -61,7 +61,6 @@ const Index = () => {
           .then(res => res.json())
           .then(data => {
             setCurrentBeekeper(data)
-            console.log("data: ", data)
           })
           .catch(e => {
             console.error(

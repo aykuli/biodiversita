@@ -3,7 +3,7 @@ import { makeStyles, createStyles } from "@material-ui/core/styles"
 import { Typography } from "@material-ui/core"
 
 import Impact from "./Impact"
-import HoneyProperty from "../HoneyProperty/HoneyProperty"
+import HoneyProperty from "../HoneyProperty/HoneyProperties"
 
 const useStyles = makeStyles(theme =>
   createStyles({

@@ -63,7 +63,6 @@ const BeeKeepers = ({
     }
   `)
   const images = generatingMockImages(imageFromQuery, 15)
-  console.log("imageFromQuery: ", imageFromQuery)
 
   return (
     <div className={styles.container}>

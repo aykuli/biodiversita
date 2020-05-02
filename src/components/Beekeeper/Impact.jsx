@@ -79,6 +79,7 @@ const Impact = () => {
           {IMPACTS.map(({ title, quantity, description }, index) => {
             return index < 3 ? (
               <ImpactAtom
+                key={`${title}-${quantity}`}
                 title={title}
                 quantity={quantity}
                 description={description}
@@ -91,6 +92,7 @@ const Impact = () => {
           {IMPACTS.map(({ title, quantity, description }, index) => {
             return index >= 3 ? (
               <ImpactAtom
+                key={`${title}-${quantity}`}
                 title={title}
                 quantity={quantity}
                 description={description}

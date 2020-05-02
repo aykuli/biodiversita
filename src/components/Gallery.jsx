@@ -70,7 +70,6 @@ const useStyles = makeStyles(theme =>
 )
 
 const Gallery = ({ images }) => {
-  console.log("Gallery")
   const styles = useStyles()
 
   const set = new Set()
@@ -83,7 +82,7 @@ const Gallery = ({ images }) => {
     <div className={styles.images}>
       {images.map((image, index) => {
         return (
-          <div className={styles.imgWrapper}>
+          <div className={styles.imgWrapper} key={uniqKeys[index]}>
             <div className={styles.hoveredImg}>
               <Typography variant="h3" className={styles.name}>
                 Beekeper name
@@ -96,7 +95,7 @@ const Gallery = ({ images }) => {
               </Button>
             </div>
             <Img
-              key={uniqKeys[index]}
+              // key={uniqKeys[index]}
               className={styles.img}
               fluid={image.fluid}
               alt={image.fluid.originalName}

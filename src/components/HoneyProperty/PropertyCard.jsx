@@ -1,33 +1,67 @@
 import React from "react"
+import Img from "gatsby-image"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 import { Typography, Card, CardMedia, CardHeader } from "@material-ui/core"
 
 const useStyles = makeStyles(theme =>
   createStyles({
     container: {
+      position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      maxWidth: 576,
+      maxHeight: 740,
+      marginBottom: 20,
+
+      paddingTop: 35,
       backgroundColor: theme.palette.background.secondary,
+      boxShadow: "none",
+      border: "none",
+      borderRadius: 0,
+    },
+    text: {
+      padding: "35px 60px 0",
     },
     title: {
+      marginBottom: 60,
       lineHeight: 1,
     },
     desc: {
       marginBottom: 60,
       fontWeight: "normal",
+      textAlign: "center",
+    },
+    img: {
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      mixBlendMode: "darken",
     },
   })
 )
 
-const PropertyCard = ({ title, description }) => {
+const PropertyCard = ({ title, description, image, isOdd }) => {
   const styles = useStyles()
+  const marginLeft = isOdd ? { marginLeft: 20 } : { marginLeft: 0 }
 
   return (
-    <Card className={styles.container}>
-      <Typography variant="h3">{title}</Typography>
-      <Typography variant="body1">{description}</Typography>
-      <CardMedia
-        className={styles.media}
-        image="../../../static/images/honey-property-bgs/honey.jpg"
-        title="Paella dish"
+    <Card className={styles.container} style={marginLeft}>
+      <div className={styles.text}>
+        <Typography variant="h3" className={styles.title}>
+          {title}
+        </Typography>
+        <Typography variant="body1" className={styles.desc}>
+          {description}
+        </Typography>
+      </div>
+      <Img
+        className={styles.img}
+        fluid={image.fluid}
+        alt={image.fluid.originalName}
+        // imgStyle={{ width: 458, height: 588 }}
+        fadeIn
+        loading="eager"
       />
     </Card>
   )
