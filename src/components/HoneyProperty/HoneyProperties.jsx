@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     container: {
       margin: 0,
+      marginBottom: 100,
       textAlign: "center",
     },
     title: {
@@ -23,7 +24,8 @@ const useStyles = makeStyles(theme =>
     cards: {
       display: "flex",
       flexWrap: "wrap",
-      marginBottom: 100,
+      justifyContent: "center",
+      margin: "0 auto 100px",
     },
     btn: {
       width: 420,
@@ -39,7 +41,7 @@ const useStyles = makeStyles(theme =>
   })
 )
 
-const HoneyProperty = ({ title, description }) => {
+const HoneyProperties = ({ title, description }) => {
   const styles = useStyles()
 
   const dataQl = useStaticQuery(graphql`
@@ -88,11 +90,17 @@ const HoneyProperty = ({ title, description }) => {
           )
         })}
       </div>
-      <Button variant="contained" className={styles.btn}>
+      <Button
+        variant="contained"
+        className={styles.btn}
+        onClick={() => {
+          console.log("you clicked on button in HoneyProperties component")
+        }}
+      >
         Scegli il suo miele
       </Button>
     </div>
   )
 }
 
-export default memo(HoneyProperty)
+export default memo(HoneyProperties)

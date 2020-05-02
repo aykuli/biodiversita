@@ -95,7 +95,6 @@ const Gallery = ({ images }) => {
               </Button>
             </div>
             <Img
-              // key={uniqKeys[index]}
               className={styles.img}
               fluid={image.fluid}
               alt={image.fluid.originalName}

@@ -59,7 +59,6 @@ const PropertyCard = ({ title, description, image, isOdd }) => {
         className={styles.img}
         fluid={image.fluid}
         alt={image.fluid.originalName}
-        // imgStyle={{ width: 458, height: 588 }}
         fadeIn
         loading="eager"
       />
