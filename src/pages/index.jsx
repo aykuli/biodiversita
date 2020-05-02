@@ -13,6 +13,7 @@ import {
 import Layout from "../components/Layout"
 import BeeKeepers from "../components/Beekepers"
 import SubHeader from "../components/SubHeader/SubHeader"
+import BeeKeeper from "../components/Beekeper"
 
 const Index = () => {
   const [currentHoney, setCurrentHoney] = useState(HONEY_TYPES[0].honey)
@@ -84,12 +85,15 @@ const Index = () => {
       <Layout>
         <SubHeader currentHoney={currentHoney} handleHoney={handleHoney} />
         {allBeekepers && currentBeekeper ? (
-          <BeeKeepers
-            honeyFullName={honeyFullName}
-            beekeeperDesc={currentBeekeper.beekeeper_description}
-            companyDesc={currentBeekeper.company_description}
-            beekeepers={allBeekepers}
-          />
+          <>
+            <BeeKeepers
+              honeyFullName={honeyFullName}
+              beekeeperDesc={currentBeekeper.beekeeper_description}
+              companyDesc={currentBeekeper.company_description}
+              beekeepers={allBeekepers}
+            />
+            <BeeKeeper beekeeperName="beekeeperName" />
+          </>
         ) : (
           <div style={{ maxWidth: 1440, margin: "20px auto" }}>
             <Skeleton variant="rect" width={"100%"} height={40} />

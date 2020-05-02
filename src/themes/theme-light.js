@@ -19,7 +19,7 @@ const theme = createMuiTheme({
     },
     text: {
       primary: "#000000",
-      secondary: "#3d4451",
+      secondary: "#ffffff",
     },
     background: {
       default: "#FFFFFF",
@@ -51,6 +51,7 @@ const theme = createMuiTheme({
       fontSize: 40,
       lineHeight: 1.4,
       fontWeight: "bold",
+      textAlign: "center",
       color: "#000000",
       margin: 0,
     },
@@ -67,7 +68,9 @@ const theme = createMuiTheme({
     button: {
       fontSize: "1rem",
       lineHeight: "1.4",
-      color: "rgb(61, 68, 81)",
+      fontWeight: "bold",
+      color: "#FFB000",
+      textTransform: "initial",
     },
     caption: {
       fontSize: ".8rem",

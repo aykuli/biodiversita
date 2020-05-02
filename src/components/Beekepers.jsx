@@ -7,27 +7,30 @@ import generatingMockImages from "../utils/image-mock-generating"
 
 import Gallery from "./Gallery"
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles(() =>
   createStyles({
     container: {
       maxWidth: 1440,
-      margin: "auto",
+      margin: "0 auto 85px",
       padding: "40px 0 40px 57px",
     },
     galleryContainer: {
       position: "relative",
       display: "flex",
-      width: "100%",
-      height: 580,
     },
     title: {
       marginBottom: 60,
     },
     beekeeperDesc: {
       marginBottom: 50,
+      textAlign: "left",
     },
     wrapper: {
       display: "flex",
+    },
+    text: {
+      width: 410,
+      marginRight: 65,
     },
   })
 )
