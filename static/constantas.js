@@ -105,3 +105,21 @@ export const HONEY_PROPERTIES = [
       "Il sapore è generalmente dolce. Inserire testo qui, sul sapore del miele.",
   },
 ]
+
+export const WHAT_IS_3BEE = [
+  {
+    title: "Monitoraggio",
+    description:
+      "Tab = Monitoraggio. Inserire testo con le specifiche dell’apicoltore, spiegazione  testo con le specifiche dell’apicoltore, testo con le dell’apicoltore, spiegazione  specifiche dell’apicoltore, spiegazione testo con le apicoltore, spiegazione  testo.",
+  },
+  {
+    title: "Certificato",
+    description:
+      "Tab = Certificato. Inserire testo con le specifiche dell’apicoltore, spiegazione  testo con le specifiche dell’apicoltore, testo con le dell’apicoltore, spiegazione  specifiche dell’apicoltore, spiegazione testo con le apicoltore, spiegazione  testo.",
+  },
+  {
+    title: "Miele genuino",
+    description:
+      "Tab = Miele genuino. Inserire testo con le specifiche dell’apicoltore, spiegazione  testo con le specifiche dell’apicoltore, testo con le dell’apicoltore, spiegazione  specifiche dell’apicoltore, spiegazione testo con le apicoltore, spiegazione  testo.",
+  },
+]

@@ -5,6 +5,8 @@ import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Box from "@material-ui/core/Box"
 
+import { WHAT_IS_3BEE } from "../../../static/constantas"
+
 const TabPanel = props => {
   const { children, value, index, ...other } = props
 
@@ -48,20 +50,38 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.default,
   },
   appBar: {
+    marginBottom: 60,
     backgroundColor: theme.palette.background.default,
     boxShadow: "none",
     "& div div": {
-      justifyContent: "space-around",
+      justifyContent: "space-between",
       "& span.MuiTabs-indicator": {
+        width: "33%",
+        height: 4,
         backgroundColor: theme.palette.text.primary,
       },
     },
   },
   tap: {
+    maxWidth: "33%",
     width: "33%",
     fontSize: 30,
     lineHeight: 1.9,
     color: "#3C3B3B",
+  },
+  bar: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    height: 4,
+    width: "100%",
+    backgroundColor: "#c4c4c4",
+    zIndex: -1,
+  },
+  desc: {
+    fontSize: 25,
+    lineHeight: 1.3,
+    textAlign: "center",
   },
 }))
 
@@ -89,32 +109,22 @@ const WhatIs3Bee = () => {
       </TabPanel>
       <AppBar position="static" className={styles.appBar}>
         <Tabs value={value} onChange={handleChange} aria-label={title}>
-          <Tab
-            label="Monitoraggio"
-            {...a11yProps("Monitoraggio")}
-            className={styles.tap}
-          />
-          <Tab
-            label="Certificato"
-            {...a11yProps("Certificato")}
-            className={styles.tap}
-          />
-          <Tab
-            label="Miele genuino"
-            {...a11yProps("Miele genuino")}
-            className={styles.tap}
-          />
+          {WHAT_IS_3BEE.map(({ title }) => (
+            <Tab
+              key={title}
+              label={title}
+              {...a11yProps(title)}
+              className={styles.tap}
+            />
+          ))}
         </Tabs>
+        <div className={styles.bar} />
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Monitoraggio0
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Certificato1
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Miele genuino2
-      </TabPanel>
+      {WHAT_IS_3BEE.map(({ description }, index) => (
+        <TabPanel value={value} index={index} className={styles.desc}>
+          {description}
+        </TabPanel>
+      ))}
     </div>
   )
 }
