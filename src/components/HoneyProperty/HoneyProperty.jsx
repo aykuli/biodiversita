@@ -2,6 +2,10 @@ import React, { memo } from "react"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 import { Typography } from "@material-ui/core"
 
+import { HONEY_PROPERTIES } from "../../../static/constantas"
+
+import PropertyCard from "./PropertyCard"
+
 const useStyles = makeStyles(theme =>
   createStyles({
     container: {
@@ -10,16 +14,13 @@ const useStyles = makeStyles(theme =>
     title: {
       lineHeight: 1,
     },
-    quantity: {
-      marginBottom: 15,
-      color: theme.palette.primary.main,
-      fontSize: 60,
-      lineHeight: 1,
-      fontWeight: "bold",
-    },
     desc: {
       marginBottom: 60,
       fontWeight: "normal",
+    },
+    cards: {
+      display: "flex",
+      flexWrap: "wrap",
     },
   })
 )
@@ -33,6 +34,13 @@ const HoneyProperty = ({ title, description }) => {
       <Typography variant="h3" className={styles.desc}>
         {description}
       </Typography>
+      <div className={styles.cards}>
+        {HONEY_PROPERTIES.map(({ title, description }, index) => {
+          return (
+            <PropertyCard key={title} title={title} description={description} />
+          )
+        })}
+      </div>
     </div>
   )
 }

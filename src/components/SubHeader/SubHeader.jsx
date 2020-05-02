@@ -6,12 +6,12 @@ import { HONEY_TYPES } from "../../../static/constantas"
 
 import HoneyType from "./HoneyType"
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(theme =>
   createStyles({
     container: {
       display: "flex",
       justifyContent: "center",
-      backgroundColor: "#F8F8F9",
+      backgroundColor: theme.palette.background.secondary,
     },
     honeyList: {
       display: "flex",

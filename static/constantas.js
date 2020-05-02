@@ -82,3 +82,26 @@ export const IMPACTS = [
     description: "Ton CO2 ass",
   },
 ]
+
+export const HONEY_PROPERTIES = [
+  {
+    title: "Il colore",
+    description:
+      "Variabile, più o meno scuro a seconda     delle zone di produzione. Tendenza a cristallizzare media.",
+  },
+  {
+    title: "L’odore",
+    description:
+      "Variabile, a secondo dei fiori maggiormente presenti nel territorio di produzione.",
+  },
+  {
+    title: "L’aroma",
+    description:
+      "variabile, a secondo dei fiori maggiormente presenti nel territorio di produzione.",
+  },
+  {
+    title: "Il sapore",
+    description:
+      "Il sapore è generalmente dolce. Inserire testo qui, sul sapore del miele.",
+  },
+]
