@@ -2,8 +2,6 @@ import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 
-import SubHeader from "./SubHeader/SubHeader"
-
 const useStyles = makeStyles(() =>
   createStyles({
     root: {},
@@ -11,9 +9,9 @@ const useStyles = makeStyles(() =>
     main: {
       position: "relative",
       background: "white",
-      maxWidth: "1200px",
       margin: "0 auto",
       padding: "50px 10px",
+      overflow: "hidden",
     },
   })
 )
@@ -24,7 +22,6 @@ const Layout = ({ children }) => {
     <div className={styles.root}>
       <CssBaseline />
       Black Header here <br />
-      <SubHeader />
       <div className={styles.content}>
         <main className={styles.main}>{children}</main>
       </div>

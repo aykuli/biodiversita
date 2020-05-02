@@ -1,21 +1,56 @@
 import React from "react"
+import Img from "gatsby-image"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    container: {},
+    // container: {
+    //   position: "relative",
+    //   display: "flex",
+    //   width: "100%",
+
+    //   overflow: "hidden",
+    // },
+    images: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+
+      display: "flex",
+    },
+    img: {
+      width: 332,
+      height: 580,
+    },
   })
 )
 
 const Gallery = ({ images }) => {
+  console.log("Gallery")
   const styles = useStyles()
 
-  const uniqKeys = images.map(() => Math.floor(Math.random() * 1000))
+  const set = new Set()
+  while (set.size < images.length) {
+    set.add(Math.floor(Math.random() * 1000))
+  }
+  const uniqKeys = Array.from(set)
+  console.log("uniqKeys: ", uniqKeys)
 
   return (
-    <div className={styles.container}>
+    <div className={styles.images}>
       {images.map((image, index) => {
-        return <img src={image} alt="" key={uniqKeys[index]} />
+        console.log("image: ", image)
+        return (
+          <Img
+            key={uniqKeys[index]}
+            className={styles.img}
+            fluid={image.fluid}
+            alt={image.fluid.originalName}
+            imgStyle={{ width: 332, height: 580 }}
+            fadeIn
+            loading="eager"
+          />
+        )
       })}
     </div>
   )

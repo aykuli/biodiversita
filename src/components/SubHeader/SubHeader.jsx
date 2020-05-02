@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { memo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 
-import { HONEY_TYPES, MAIN_API, BEEKEPERS } from "../../../static/constantas"
+import { HONEY_TYPES } from "../../../static/constantas"
 
 import HoneyType from "./HoneyType"
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles(() =>
   createStyles({
     container: {
       display: "flex",
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme =>
   })
 )
 
-const SubHeader = () => {
+const SubHeader = ({ currentHoney, handleHoney }) => {
   const styles = useStyles()
 
   const dataQl = useStaticQuery(graphql`
@@ -63,7 +63,6 @@ const SubHeader = () => {
   `)
 
   const imgNodes = dataQl.allImageSharp.edges
-  console.log(imgNodes)
 
   // filtering needed images for SubHeader
   const images = []
@@ -80,23 +79,6 @@ const SubHeader = () => {
     }
   })
 
-  const [currentHoney, setCurrentHoney] = useState(HONEY_TYPES[0].honey)
-
-  const handleHoney = honey => {
-    setCurrentHoney(honey)
-  }
-
-  const beekeepersFetching = async honey => {
-    const url = `${MAIN_API}${BEEKEPERS}?honey=${honey}`
-    const res = await fetch(url)
-    const data = await res.json()
-    console.log("data: ", data)
-  }
-
-  useEffect(() => {
-    beekeepersFetching(currentHoney)
-  }, [currentHoney])
-
   return (
     <div className={styles.container}>
       <ul className={styles.honeyList}>
@@ -109,7 +91,6 @@ const SubHeader = () => {
               imgNode = item.node
             }
           })
-          console.log("imgNode: ", imgNode)
 
           return (
             <li key={honey}>
@@ -131,4 +112,4 @@ const SubHeader = () => {
   )
 }
 
-export default SubHeader
+export default memo(SubHeader)

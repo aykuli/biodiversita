@@ -9,9 +9,6 @@ const useStyles = makeStyles(theme =>
       display: "block",
       width: "100%",
       height: "100%",
-      // display: "flex",
-      // flexDirection: "column",
-      // justifyContent: "space-between",
       margin: "0 auto",
       padding: 0,
       backgroundColor: "transparent",
@@ -56,7 +53,7 @@ const HoneyType = ({ honey, handleHoney, isCurrent, isNew, imgData }) => {
     >
       <Img
         className={styles.img}
-        imgStyle={{ width: "auto", height: "auto", left: 30 }}
+        imgStyle={{ width: "auto", height: "auto", left: 20 }}
         fluid={imgData.fluid}
         alt={imgData.fluid.originalName}
         fadeIn
