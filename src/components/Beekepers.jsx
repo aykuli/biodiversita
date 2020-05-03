@@ -62,6 +62,7 @@ const BeeKeepers = ({
   beekeeperDesc,
   companyDesc,
   beekeepers,
+  handleBeekeeper,
 }) => {
   const styles = useStyles()
   // TODO there have to be more complicated logic to save meaning of the sentence.
@@ -100,7 +101,11 @@ const BeeKeepers = ({
         </div>
 
         <div className={styles.galleryContainer} id="gallery-container">
-          <Gallery images={images} />
+          <Gallery
+            images={images}
+            beekeepers={beekeepers}
+            handleBeekeeper={handleBeekeeper}
+          />
         </div>
       </div>
     </div>

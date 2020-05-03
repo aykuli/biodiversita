@@ -14,9 +14,6 @@ const useStyles = makeStyles(theme =>
       left: 0,
 
       width: "100%",
-      "& div": {
-        // width: "100%",
-      },
       "& .carousel-arrow": {
         display: "none",
       },
@@ -26,15 +23,18 @@ const useStyles = makeStyles(theme =>
       width: 332,
       height: 580,
       cursor: "pointer",
-      "&:hover, &:focus": {
-        "& img": {
-          filter: "brightness(0.5)",
-          transition: `filter .5s ${timingFunc}`,
-        },
+      "&:hover img, &:focus img": {
+        outline: "1px solid red",
+        filter: "brightness(0.5)",
+        transition: `filter .5s ${timingFunc}`,
       },
+
       "@media (max-width: 1200px)": {
         width: 284,
         height: 496,
+      },
+      "@media (max-width: 600px)": {
+        width: "100%",
       },
     },
     img: {
@@ -43,6 +43,11 @@ const useStyles = makeStyles(theme =>
       "@media (max-width: 1200px)": {
         width: 284,
         height: 496,
+        filter: "brightness(0.5)",
+      },
+      "@media (max-width: 600px)": {
+        width: "100%",
+        height: "100%",
       },
     },
     hoveredImg: {
@@ -64,8 +69,14 @@ const useStyles = makeStyles(theme =>
         transition: `opacity .5s ${timingFunc}`,
       },
       "@media (max-width: 1200px)": {
+        opacity: 1,
         width: 284,
         height: 496,
+        zIndex: 2,
+      },
+      "@media (max-width: 600px)": {
+        width: "100%",
+        zIndex: 2,
       },
     },
     name: {
@@ -88,8 +99,19 @@ const useStyles = makeStyles(theme =>
   })
 )
 
-const Gallery = ({ images }) => {
+// if we take images from API, we can take it from beekepers array,
+// if from the local folder - ffrom prepared images array grom GraphQL
+
+const Gallery = ({ images, beekeepers, handleBeekeeper }) => {
   const styles = useStyles()
+
+  const bodyWidth = document.body.clientWidth
+  let imgStyles
+  if (bodyWidth <= 1000 && bodyWidth >= 600) {
+    imgStyles = { width: 284, height: 496 }
+  } else if (bodyWidth < 600) {
+    imgStyles = { width: "100%", height: "100%" }
+  }
 
   const [galleryWidth, setGalleryWidth] = useState("100%")
   const [slidesToShowCount, setSlidesToShowCount] = useState(2)
@@ -99,15 +121,14 @@ const Gallery = ({ images }) => {
     set.add(Math.floor(Math.random() * 1000))
   }
   const uniqKeys = Array.from(set)
-  // const slidesToShowCount = 2
 
   setTimeout(() => {
     const galleryContainer = document.body.querySelector("#gallery-container")
 
-    const bodyWidth = document.body.clientWidth
     const newGalleryWidth = bodyWidth - galleryContainer.offsetLeft
     console.log("newGalleryWidth: ", newGalleryWidth)
-    setSlidesToShowCount(bodyWidth > 1000 ? 2 : 1)
+    setSlidesToShowCount(bodyWidth > 600 ? 2 : 1)
+
     setGalleryWidth(newGalleryWidth)
   }, 500)
 
@@ -120,6 +141,7 @@ const Gallery = ({ images }) => {
     <div className={styles.images} style={{ width: galleryWidth }}>
       <Slider {...sliderSettings}>
         {images.map((image, index) => {
+          const currenBeekeeper = beekeepers[index]
           return (
             <div
               className={styles.imgWrapper}
@@ -128,12 +150,20 @@ const Gallery = ({ images }) => {
             >
               <div className={styles.hoveredImg}>
                 <Typography variant="h3" className={styles.name}>
-                  Beekeper name
+                  {currenBeekeeper.fullname}
                 </Typography>
-                <Button variant="contained" className={styles.btn}>
+                <Button
+                  variant="contained"
+                  className={styles.btn}
+                  onClick={() => handleBeekeeper(currenBeekeeper.id)}
+                >
                   Scopri di più
                 </Button>
-                <Button variant="outlined" className={styles.link}>
+                <Button
+                  variant="outlined"
+                  className={styles.link}
+                  onClick={() => handleBeekeeper(currenBeekeeper.id)}
+                >
                   Scegli il suo miele
                 </Button>
               </div>
@@ -141,14 +171,7 @@ const Gallery = ({ images }) => {
                 className={styles.img}
                 fluid={image.fluid}
                 alt={image.fluid.originalName}
-                imgStyle={{
-                  width: 332,
-                  height: 580,
-                  "@media (maxWidth: 1000px)": {
-                    width: 284,
-                    height: 496,
-                  },
-                }}
+                imgStyle={imgStyles}
                 fadeIn
                 loading="eager"
               />

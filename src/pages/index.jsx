@@ -56,6 +56,7 @@ const Index = () => {
   const oneBeekeeperFetching = useCallback(
     id => {
       if (id) {
+        console.log("fetching beekeper with id: ", id)
         const url = `${MAIN_API}${BEEKEPER_DESCRIPTION}${id}`
         fetch(url)
           .then(res => res.json())
@@ -73,12 +74,6 @@ const Index = () => {
     [currentBeekeper]
   )
 
-  useEffect(() => {
-    if (![undefined, null].includes(currentBeekeper)) {
-      oneBeekeeperFetching(currentBeekeper.id)
-    }
-  }, [currentBeekeper])
-
   return (
     <MuiThemeProvider theme={theme}>
       <Layout>
@@ -90,6 +85,7 @@ const Index = () => {
               beekeeperDesc={currentBeekeper.beekeeper_description}
               companyDesc={currentBeekeper.company_description}
               beekeepers={allBeekepers}
+              handleBeekeeper={oneBeekeeperFetching}
             />
             <BeeKeeper beekeeperName="beekeeperName" />
           </>
