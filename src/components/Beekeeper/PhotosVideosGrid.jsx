@@ -30,11 +30,26 @@ const useStyles = makeStyles(() =>
     },
     grid: {
       display: "grid",
-      gridTemplateAreas: `'video0 video0 img0 video1''video0 video0 img1 video1''video0 video0 img1 video2''img2   img3   img4 video2'`,
+      gridTemplateAreas: `
+        'video0 video0 img0 video1'
+        'video0 video0 img1 video1'
+        'video0 video0 img1 video2'
+        'img2   img3   img4 video2'`,
       gridTemplateRows: "32% 16% 16% 32%",
       gridTemplateColumns: "22% 22% 22% 33%",
       gridGap: 20,
       height: 811,
+      marginBottom: 100,
+      "@media (max-width: 800px)": {
+        gridTemplateAreas: `
+          'video0 video0 video0 img0'
+          'video0 video0 video0 img2'
+          'img4   video1 video1 video1'
+          'video2 video1 video1 video1'
+          'img3   img3   img1 img1'`,
+        gridTemplateRows: "1fr 1fr 1fr 1fr 2fr",
+        gridTemplateColumns: "2fr 1fr 1fr 2fr",
+      },
     },
   })
 )
