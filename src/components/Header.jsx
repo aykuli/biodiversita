@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+import React, { useState, useEffect } from "react"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 import { IconButton } from "@material-ui/core"
 
@@ -7,7 +7,7 @@ import search from "../../static/imgs/icons/search.svg"
 import hexagon from "../../static/imgs/icons/hexagon.svg"
 import menuMobile from "../../static/imgs/icons/menu-mobile.svg"
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       backgroundColor: "#000000",

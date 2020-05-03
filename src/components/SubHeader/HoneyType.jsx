@@ -7,10 +7,12 @@ const useStyles = makeStyles(theme =>
   createStyles({
     item: {
       display: "block",
-      width: "100%",
-      height: "100%",
+      width: 100,
+      minWidth: 100,
+      height: 120,
       margin: "0 auto",
       padding: 0,
+      paddingTop: 8,
       backgroundColor: "transparent",
       border: "none",
       fontSize: 12,
@@ -53,7 +55,13 @@ const HoneyType = ({ honey, handleHoney, isCurrent, isNew, imgData }) => {
     >
       <Img
         className={styles.img}
-        imgStyle={{ width: "auto", height: "auto", left: 20 }}
+        imgStyle={{
+          width: "auto",
+          height: "auto",
+          left: "50%",
+          transform: "translateX(-50%)",
+          filter: "hue-rotate(90deg)",
+        }}
         fluid={imgData.fluid}
         alt={imgData.fluid.originalName}
         fadeIn

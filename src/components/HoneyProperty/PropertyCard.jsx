@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
-import { Typography, Card, CardMedia, CardHeader } from "@material-ui/core"
+import { Typography, Card } from "@material-ui/core"
 
 const useStyles = makeStyles(theme =>
   createStyles({
