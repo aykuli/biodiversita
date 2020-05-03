@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 import { IconButton } from "@material-ui/core"
 
 import logo from "../../static/imgs/icons/logo.png"
 import search from "../../static/imgs/icons/search.svg"
 import hexagon from "../../static/imgs/icons/hexagon.svg"
+import menuMobile from "../../static/imgs/icons/menu-mobile.svg"
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -19,9 +20,9 @@ const useStyles = makeStyles(theme =>
     },
     iconButton: {
       padding: 3,
-      marginRight: 75,
+      margin: "0 75px 0 14px",
       "&:last-child": {
-        marginRight: 0,
+        margin: "0 14px",
       },
     },
     right: {
@@ -34,28 +35,57 @@ const useStyles = makeStyles(theme =>
 const Header = () => {
   const styles = useStyles()
 
+  const [width, setWidth] = useState(document.body.clientWidth)
+  const [isMobile, setIsMobile] = useState(width <= 500)
+
+  const windowSizeWatcher = e => {
+    const newWidth = document.body.clientWidth
+    setWidth(newWidth)
+    setIsMobile(newWidth <= 400)
+  }
+  document.body.addEventListener("resize", windowSizeWatcher)
+
+  useEffect(() => {
+    document.body.addEventListener("resize", windowSizeWatcher)
+    return () => {
+      document.body.removeEventListener("resize", windowSizeWatcher)
+    }
+  }, [width])
+
   return (
     <div className={styles.root}>
       <div className={styles.container}>
-        <div className={styles.left}>
+        {isMobile ? (
           <IconButton
             color="primary"
-            aria-label="3Bee"
+            aria-label="menu"
             component="div"
+            disableRipple={false}
+            disableFocusRipple={false}
             className={styles.iconButton}
           >
-            <img src={logo} alt="logo" />
+            <img src={menuMobile} alt="logo" />
           </IconButton>
-        </div>
+        ) : null}
+        <IconButton
+          color="primary"
+          aria-label="3Bee"
+          component="div"
+          className={styles.iconButton}
+        >
+          <img src={logo} alt="logo" />
+        </IconButton>
         <div className={styles.right}>
-          <IconButton
-            color="primary"
-            aria-label="search"
-            component="div"
-            className={styles.iconButton}
-          >
-            <img src={search} alt="search" />
-          </IconButton>
+          {!isMobile ? (
+            <IconButton
+              color="primary"
+              aria-label="search"
+              component="div"
+              className={styles.iconButton}
+            >
+              <img src={search} alt="search" />
+            </IconButton>
+          ) : null}
           <IconButton
             color="primary"
             aria-label="hexagon"
