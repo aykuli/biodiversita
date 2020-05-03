@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+import React, { memo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Slider from "infinite-react-carousel"
 import { makeStyles, createStyles } from "@material-ui/core/styles"

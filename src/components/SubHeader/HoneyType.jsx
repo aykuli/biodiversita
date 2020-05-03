@@ -60,7 +60,6 @@ const HoneyType = ({ honey, handleHoney, isCurrent, isNew, imgData }) => {
           height: "auto",
           left: "50%",
           transform: "translateX(-50%)",
-          filter: "hue-rotate(90deg)",
         }}
         fluid={imgData.fluid}
         alt={imgData.fluid.originalName}

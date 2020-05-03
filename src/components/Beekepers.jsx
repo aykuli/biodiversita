@@ -12,7 +12,10 @@ const useStyles = makeStyles(() =>
     container: {
       maxWidth: 1440,
       margin: "0 auto 85px",
-      padding: "40px 0 40px 57px",
+      padding: "40px 57px",
+      "@media (max-width: 800px)": {
+        padding: "40px 45px",
+      },
     },
     galleryContainer: {
       position: "relative",
@@ -24,13 +27,32 @@ const useStyles = makeStyles(() =>
     beekeeperDesc: {
       marginBottom: 50,
       textAlign: "left",
+      "@media (max-width: 1000px)": {
+        textAlign: "center",
+      },
     },
     wrapper: {
       display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
     },
     text: {
-      width: 410,
+      width: "32%",
       marginRight: 65,
+      marginBottom: 45,
+      "@media (max-width: 1000px)": {
+        width: "100%",
+        marginRight: 0,
+        textAlign: "center",
+      },
+    },
+    galleryContainer: {
+      position: "relative",
+      width: "60%",
+      "@media (max-width: 1000px)": {
+        width: "100%",
+        height: 500,
+      },
     },
   })
 )
@@ -77,7 +99,7 @@ const BeeKeepers = ({
           <Typography variant="body1">{companyDesc}</Typography>
         </div>
 
-        <div className={styles.galleryContainer}>
+        <div className={styles.galleryContainer} id="gallery-container">
           <Gallery images={images} />
         </div>
       </div>
