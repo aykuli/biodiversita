@@ -20,6 +20,7 @@ const Index = () => {
   const [honeyFullName, setHoneyFullName] = useState(HONEY_TYPES[0].fullName)
   const [allBeekepers, setAllBeekepers] = useState(null)
   const [currentBeekeper, setCurrentBeekeper] = useState(null)
+  console.log("currentBeekeper: ", currentBeekeper)
 
   const handleHoney = honey => {
     setCurrentHoney(honey)
@@ -87,7 +88,9 @@ const Index = () => {
               beekeepers={allBeekepers}
               handleBeekeeper={oneBeekeeperFetching}
             />
-            <BeeKeeper beekeeperName="beekeeperName" />
+            <BeeKeeper
+              beekeeperName={currentBeekeper.fullname || currentBeekeper.name}
+            />
           </>
         ) : (
           <div style={{ maxWidth: 1440, margin: "20px auto" }}>
