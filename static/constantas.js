@@ -126,3 +126,6 @@ export const WHAT_IS_3BEE = [
       "Tab = Miele genuino. Inserire testo con le specifiche dell’apicoltore, spiegazione  testo con le specifiche dell’apicoltore, testo con le dell’apicoltore, spiegazione  specifiche dell’apicoltore, spiegazione testo con le apicoltore, spiegazione  testo.",
   },
 ]
+
+export const POSTER_FOR_VIDEOS_MOCK =
+  "https://i.ytimg.com/vi/ZwIb_IAudY0/maxresdefault.jpg?v=5ea14600"

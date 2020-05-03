@@ -17,10 +17,6 @@ const useStyles = makeStyles(() =>
         padding: "40px 45px",
       },
     },
-    galleryContainer: {
-      position: "relative",
-      display: "flex",
-    },
     title: {
       marginBottom: 60,
     },
@@ -48,6 +44,7 @@ const useStyles = makeStyles(() =>
     },
     galleryContainer: {
       position: "relative",
+      display: "flex",
       width: "60%",
       "@media (max-width: 1000px)": {
         width: "100%",

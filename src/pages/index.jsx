@@ -20,7 +20,6 @@ const Index = () => {
   const [honeyFullName, setHoneyFullName] = useState(HONEY_TYPES[0].fullName)
   const [allBeekepers, setAllBeekepers] = useState(null)
   const [currentBeekeper, setCurrentBeekeper] = useState(null)
-  console.log("currentBeekeper: ", currentBeekeper)
 
   const handleHoney = honey => {
     setCurrentHoney(honey)
@@ -38,7 +37,7 @@ const Index = () => {
         .then(data => data.json())
         .then(res => {
           setAllBeekepers(res)
-          setCurrentBeekeper(res[0])
+          oneBeekeeperFetching(res[0].id)
         })
         .catch(e => {
           console.error(
@@ -57,7 +56,6 @@ const Index = () => {
   const oneBeekeeperFetching = useCallback(
     id => {
       if (id) {
-        console.log("fetching beekeper with id: ", id)
         const url = `${MAIN_API}${BEEKEPER_DESCRIPTION}${id}`
         fetch(url)
           .then(res => res.json())
@@ -88,9 +86,7 @@ const Index = () => {
               beekeepers={allBeekepers}
               handleBeekeeper={oneBeekeeperFetching}
             />
-            <BeeKeeper
-              beekeeperName={currentBeekeper.fullname || currentBeekeper.name}
-            />
+            <BeeKeeper beekeper={currentBeekeper} />
           </>
         ) : (
           <div style={{ maxWidth: 1440, margin: "20px auto" }}>

@@ -83,7 +83,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const imgStyle = {
-  // height: 670,
   objectFit: "contain",
 }
 
@@ -121,7 +120,7 @@ const WhatIs3Bee = () => {
     }
   })
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (e, newValue) => {
     setValue(newValue)
   }
 
@@ -132,9 +131,8 @@ const WhatIs3Bee = () => {
       <Typography variant="h2" className={styles.title}>
         {title}
       </Typography>
-      {WHAT_IS_3BEE.map(({ title, imgName }, index) => {
+      {WHAT_IS_3BEE.map(({ imgName }, index) => {
         const image = images.get(imgName)
-        console.log("image: ", image)
         return (
           <TabPanel
             key={imgName}

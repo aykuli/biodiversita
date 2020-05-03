@@ -1,0 +1,31 @@
+#video0 {
+  grid-area: video0;
+}
+
+#video1 {
+  grid-area: video1;
+}
+
+#video2 {
+  grid-area: video2;
+}
+
+#img0 {
+  grid-area: img0;
+}
+
+#img1 {
+  grid-area: img1;
+}
+
+#img2 {
+  grid-area: img2;
+}
+
+#img3 {
+  grid-area: img3;
+}
+
+#img4 {
+  grid-area: img4;
+}

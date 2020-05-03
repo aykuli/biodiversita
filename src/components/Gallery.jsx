@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Img from "gatsby-image"
 import Slider from "infinite-react-carousel"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
@@ -126,7 +126,6 @@ const Gallery = ({ images, beekeepers, handleBeekeeper }) => {
     const galleryContainer = document.body.querySelector("#gallery-container")
 
     const newGalleryWidth = bodyWidth - galleryContainer.offsetLeft
-    console.log("newGalleryWidth: ", newGalleryWidth)
     setSlidesToShowCount(bodyWidth > 600 ? 2 : 1)
 
     setGalleryWidth(newGalleryWidth)
@@ -143,11 +142,7 @@ const Gallery = ({ images, beekeepers, handleBeekeeper }) => {
         {images.map((image, index) => {
           const currenBeekeeper = beekeepers[index]
           return (
-            <div
-              className={styles.imgWrapper}
-              key={uniqKeys[index]}
-              tabIndex={0}
-            >
+            <div className={styles.imgWrapper} key={uniqKeys[index]}>
               <div className={styles.hoveredImg}>
                 <Typography variant="h3" className={styles.name}>
                   {currenBeekeeper.fullname}

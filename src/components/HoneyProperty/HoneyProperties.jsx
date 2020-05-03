@@ -61,15 +61,12 @@ const HoneyProperties = ({ title, description }) => {
   `)
 
   const imgNodes = dataQl.allImageSharp.edges
-  console.log("imgNodes: ", imgNodes)
   const images = []
   imgNodes.forEach(item => {
     if (item.node.fluid.originalName.includes("card")) {
       images.push(item.node)
     }
   })
-
-  console.log("images: ", images)
 
   return (
     <div className={styles.container}>
