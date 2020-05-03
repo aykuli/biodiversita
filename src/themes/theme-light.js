@@ -39,6 +39,9 @@ const theme = createMuiTheme({
       color: "#FFB000",
       textAlign: "center",
       margin: "20px 0 20px",
+      "@media (min-width:600px)": {
+        fontSize: 30,
+      },
     },
     h2: {
       fontSize: 65,
@@ -47,6 +50,9 @@ const theme = createMuiTheme({
       color: "#FFB000",
       textAlign: "center",
       margin: "20px 0 20px",
+      "@media (min-width:600px)": {
+        fontSize: 30,
+      },
     },
     h3: {
       fontSize: 40,
@@ -55,6 +61,9 @@ const theme = createMuiTheme({
       textAlign: "center",
       color: "#000000",
       margin: 0,
+      "@media (min-width:600px)": {
+        fontSize: 25,
+      },
     },
     h4: {
       fontSize: 30,
@@ -68,6 +77,9 @@ const theme = createMuiTheme({
       fontSize: 25,
       lineHeight: 1.3,
       color: "#000000",
+      "@media (min-width:600px)": {
+        fontSize: 18,
+      },
     },
     body2: {
       fontSize: 18,
